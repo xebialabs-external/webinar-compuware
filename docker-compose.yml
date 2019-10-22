@@ -12,6 +12,9 @@ version: '3'
 services:
   xlr:
     build: compuware-xlr
+    links:
+      - ispw
+      - topaz-box
     volumes:
       - ./compuware-xlr/ext:/opt/xebialabs/xl-release-server/ext
     environment:
@@ -20,3 +23,16 @@ services:
       - XL_LICENSE=${XLR_LICENSE}
     ports:
      - "15516:5516"
+
+  ispw:
+    build: compuware-ispw
+    ports:
+      - "18080:8080"
+
+  topaz-box:
+    build: compuware-topaz-test
+    environment:
+      - USERNAME=topaztest
+      - PASSWORD=${ADMIN_PASSWORD}
+    ports:
+      - "2222:22"

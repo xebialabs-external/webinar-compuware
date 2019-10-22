@@ -1,0 +1,195 @@
+Neither the JAVA_HOME nor the JRE_HOME environment variables are defined.
+At least one of these environment variables should be set to run this program.
+Attempting to use the Java found by the installation program.
+**NOTE** Use of the Java found by the installation program is deprecated.
+Using INSTALLATION_JAVA_HOME: C:\Program Files\Java\jre1.8.0_201
+No WORKSPACE provided, using default WORKSPACE: C:\Program Files\Compuware\Topaz Workbench CLI\workspace
+        1 file(s) copied.
+
+Topaz for Total Test Command Line Interface (CLI) 19.4.1.v20190319-1916_877
+Validating project directory: C:\Users\wlee\CWXTCOB_TTT
+Found files 15 from project 'C:\Users\wlee\CWXTCOB_TTT' with extension 'listructure'
+Found files 10 from project 'C:\Users\wlee\CWXTCOB_TTT' with extension 'interface'
+Found files 4 from project 'C:\Users\wlee\CWXTCOB_TTT' with extension 'stub'
+Found files 1 from project 'C:\Users\wlee\CWXTCOB_TTT' with extension 'testscenario'
+Removed all files in directory: C:\Program Files\Compuware\Topaz Workbench CLI\workspace\HostServices
+Loaded properties file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Project.properties'
+**************** Start processing: CWXTCOB_Scenario.testscenario ****************
+
+Processing 'builder' request with the following parameters.
+Project folder: C:\Users\wlee\CWXTCOB_TTT
+Archive file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Last Execution\CWXTCOB_Scenario.archive
+Binary input file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.bininp
+Binary reference file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binref
+Target encoding: 1047
+Building archive from testsuite: file:/C:/Users/wlee/CWXTCOB_TTT/Unit%20Test/.temp/CWXTCOB_Scenario.testsuite
+Saving archive to: file:/C:/Users/wlee/CWXTCOB_TTT/Unit%20Test/Output/Last%20Execution/CWXTCOB_Scenario.archive
+Building binary. Saving binary input to C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.bininp.
+Building binary. Saving binary reference to C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binref.
+Processing 'upload' request with the following parameters.
+Host: 192.168.95.3
+Port: 16196
+User: PU02X02
+Password: <supplied by user>
+Target encoding: 1047
+Binary input file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.bininp' will be upload to the manframe.
+Binary reference file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binref' will be upload to the manframe.
+Start upload of binary files.
+Creating host connection for host 192.168.95.3:16196
+Creating host credentials for PU02X02
+Successfully conected to 192.168.95.3:16196.
+Connected PU02X02 to host 192.168.95.3:16196
+Uploading binary input data to dataset 'PU02X02.TOTALTST.ID962456.BININP.'
+Loaded properties file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Project.properties'
+Loaded properties file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Project.properties'
+Allocated dataset 'PU02X02.TOTALTST.ID962456.BININP' PRIMARY=26 SECONDARY=6
+Successfully wrote 528384 bytes to dataset.PU02X02.TOTALTST.ID962456.BININP
+Uploading binary reference data to dataset 'PU02X02.TOTALTST.ID962456.BINREF.'
+Allocated dataset 'PU02X02.TOTALTST.ID962456.BINREF' PRIMARY=1 SECONDARY=1
+Allocating binary result dataset 'PU02X02.TOTALTST.ID962456.BINRES.'
+Loaded properties file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Project.properties'
+Allocated dataset 'PU02X02.TOTALTST.ID962456.BINRES' PRIMARY=500 SECONDARY=200
+Successfully uploaded files.
+Deleted file: 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario.testsuite'.
+Processing 'submit' request with the following parameters.
+Host: 192.168.95.3
+Port: 16196
+User: PU02X02
+Password: <supplied by user>
+Target encoding: 1047
+Wait for job completion: true
+Minutes to wait for job completion: 20
+JCL will be submitted from local file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\JCL\Runner.jcl
+${TOTALTEST_BININP} replacement value: PU02X02.TOTALTST.ID962456.BININP
+${TOTALTEST_BINREF} replacement value: PU02X02.TOTALTST.ID962456.BINREF
+${TOTALTEST_BINRES} replacement value: PU02X02.TOTALTST.ID962456.BINRES
+Use stubs: true
+Number of time to repeat test: 0
+Job card file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\JCL\JobCard.jcl
+Added notification listener: com.compuware.unittest.eclipse.hostservices.JESUtilities
+Submitted JCL - JOB PA02X01T(J0112503)
+Sending zAdviser event: EXECUTION(3200)
+Created connection to H2 for zAdviser: jdbc:h2:file:C:/Program Files/Compuware/Topaz Workbench CLI/workspace//zadviser/zadviser
+Created connection to H2 for zAdviser: jdbc:h2:file:C:/Program Files/Compuware/Topaz Workbench CLI/workspace//zadviser/zadviser
+No host connections are defined that support zAdviser, flush failure count incremented to 8.
+Waiting for job PA02X01T(J0112503) to complete.
+Processing HostServices event HCI_NOTIFY_EVENT
+Notification message: 12:29:33 J0112503 HASP165 PA02X01T ENDED AT CWPA  MAXCC=0000
+
+***************** Output from TTTRUNNR *****************
+
+ STTR043I Initializing simulation environment for: COBOL V4
+ STTR043I Initializing simulation environment for: COBOL V5
+ STTR011I totaltest zTargetRunner v170200 on 2019-07-03 12:29.32∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜
+ STTR012I Options set to EXIT(),STUBS(ON),REPEAT(0),ARGTYPE(∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜∩┐╜)
+ STTR013I Processing test suite Unit Tes
+ STTR014I Processing test scenario CWXTCOB_
+ STTR028I Processing test case CWXTCOBC
+ STTR006I Executing target CWXTCOB
+ STTR008I All targets successfully executed
+Processing 'download' request with the following parameters.
+Host: 192.168.95.3
+Port: 16196
+User: PU02X02
+Password: <supplied by user>
+Target encoding: 1047
+Binary result from mainframe dataset will be written to local file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binres
+Binary result will be downloaded from: PU02X02.TOTALTST.ID962456.BINRES
+Start download of binary result data from dataset 'PU02X02.TOTALTST.ID962456.BINRES' to file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binres'.
+Download binary result data from dataset 'PU02X02.TOTALTST.ID962456.BINRES'.
+Successfully downloaded binary result data from dataset 'PU02X02.TOTALTST.ID962456.BINRES' to file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binres'.
+Processing 'parser' request with the following parameters.
+Archive file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Last Execution\CWXTCOB_Scenario.archive
+Binary result file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binres
+Target encoding: 1047
+Loaded properties file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Project.properties'
+Parsing binary output C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binres into archive file:/C:/Users/wlee/CWXTCOB_TTT/Unit%20Test/Output/Last%20Execution/CWXTCOB_Scenario.archive
+Unknown version: totaltest zTargetRunner v170200  .2019022009304345-0500 on 2019-07-03 12:29.32
+Loaded properties file 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Project.properties'
+Processing 'resultchecker' request with the following parameters.
+Project Folder: C:\Users\wlee\CWXTCOB_TTT
+Archive file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Last Execution\CWXTCOB_Scenario.archive
+Output Archive file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Last Execution\CWXTCOB_Scenario.archive
+Result file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\.results\CWXTCOB_Scenario.result
+Report file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Reports\CWXTCOB_Scenario.html
+JUnit file: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\JUnit\CWXTCOB_Scenario.xml
+Target encoding: 1047
+File encoding: UTF-8
+Loading archive from: file:/C:/Users/wlee/CWXTCOB_TTT/Unit%20Test/Output/Last%20Execution/CWXTCOB_Scenario.archive
+Computing results.
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@47ad69f7 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.0, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@422b8438 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.1, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@30669dac (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.2, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@629adce (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.3, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 12 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@6a282fdd (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.4, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@743c6ce4 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.5, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@70331432 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.6, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 5 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@3bbf9027 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.7, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 18 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@10c2064a (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.8, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@70e13fa (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.9, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 1 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@6ff415ad (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.10, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@280d9edc (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.11, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@28fd3dc1 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.12, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@5f9b6ae7 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.13, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@108d55c4 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.14, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@5432c277 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.15, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@15e0fe05 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.16, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 1 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@1128620c (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.17, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 1 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@6bf13698 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.18, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 1 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@299270eb (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.19, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@3b90a30a (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.20, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 1 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@69fa8e76 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.21, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 22 checkconditions. 0 error(s), 3 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@bdd2027 (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.22, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 1 checkconditions. 0 error(s), 0 failure(s).
+Checking checkconditions for: RPTFILE com.compuware.unittest.eclipse.core.model.xml.stub.impl.StubDataImpl@31f20c9f (callToken: <unset>, id: Unit%20Test/Stubs/CWXTCOB_RPTFILE_WRITE_01.stub.23, name: RPTFILE, selected: true, statementHasParmcount: false)
+Finished checking 4 checkconditions. 0 error(s), 1 failure(s).
+Sending zAdviser event: EXECUTION_RESULTS_TESTCASES(3410)
+Sending zAdviser event: EXECUTION_RESULTS(3400)
+Saving archive to: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Last Execution\CWXTCOB_Scenario.archive
+Saving Result report to: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\.results\CWXTCOB_Scenario.result
+Saving JUnit report to: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\JUnit\CWXTCOB_Scenario.xml
+Saving Sonar report to: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Sonar\CWXTCOB_Scenario.xml
+Saving report to: C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Reports\CWXTCOB_Scenario.html
+Backing up archive 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\Last Execution\CWXTCOB_Scenario.archive' to 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\Output\History\CWXTCOB_Scenario_20190703_132921.archive
+Deleted file: 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.bininp'.
+Deleted file: 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binref'.
+Deleted file: 'C:\Users\wlee\CWXTCOB_TTT\Unit Test\.temp\CWXTCOB_Scenario_20190703_132921.binres'.
+Processing 'delete' request with the following parameters.
+Host: 192.168.95.3
+Port: 16196
+User: PU02X02
+Password: <supplied by user>
+Target encoding: 1047
+Deleted dataset 'PU02X02.TOTALTST.ID962456.BININP'.
+Deleted dataset 'PU02X02.TOTALTST.ID962456.BINREF'.
+Deleted dataset 'PU02X02.TOTALTST.ID962456.BINRES'.
+
+**************** End processing: CWXTCOB_Scenario.testscenario ****************
+Disconnected from host: '192.168.95.3:16196
+Removed all files in directory: C:\Program Files\Compuware\Topaz Workbench CLI\workspace\HostServices
+publishEvents - starting
+Created connection to H2 for zAdviser: jdbc:h2:file:C:/Program Files/Compuware/Topaz Workbench CLI/workspace//zadviser/zadviser
+No host connections are defined that support zAdviser, flush failure count incremented to 9.
+TotalTestCLI return code: 0
