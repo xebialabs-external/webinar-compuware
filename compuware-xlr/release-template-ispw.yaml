@@ -47,23 +47,6 @@ spec:
           - name: Placeholder for finishing deployment
             type: xlrelease.Task
             owner: admin
-          links:
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase2033345\/Task6872401\/Task2331482\/Link3327597
-            type: xlrelease.Link
-            source: Get deployment wait task id
-            target: Placeholder for finishing deployment
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase2033345\/Task6872401\/Task2331482\/Link6008439
-            type: xlrelease.Link
-            source: Get release info
-            target: Create a new release
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase2033345\/Task6872401\/Task2331482\/Link1531888
-            type: xlrelease.Link
-            source: Create a new release
-            target: Validate ISPW release components
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase2033345\/Task6872401\/Task2331482\/Link2764447
-            type: xlrelease.Link
-            source: Validate ISPW release components
-            target: Run deployment
       - name: end2end_test
         client: Compuware Topaz
         type: topaz.runtest
@@ -119,23 +102,6 @@ spec:
           - name: preprod deploy wait task id
             type: xlrelease.Task
             owner: admin
-          links:
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase799217\/Task6872401\/Task4010347\/Link4372122
-            type: xlrelease.Link
-            source: Get preprod deploy wait task id
-            target: preprod deploy wait task id
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase799217\/Task6872401\/Task4010347\/Link1368733
-            type: xlrelease.Link
-            source: Get preprod promote wait task id
-            target: preprod promote wait task id
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase799217\/Task6872401\/Task4010347\/Link6279116
-            type: xlrelease.Link
-            source: Promote
-            target: Run deployment
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase799217\/Task6872401\/Task4010347\/Link4877082
-            type: xlrelease.Link
-            source: Validate ISPW release components
-            target: Promote
       - name: Approve pre prod
         type: xlrelease.GateTask
         conditions:
@@ -189,23 +155,6 @@ spec:
           - name: prod deploy wait task id
             type: xlrelease.Task
             owner: admin
-          links:
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase6280420\/Task6872401\/Task1845049\/Link4877082
-            type: xlrelease.Link
-            source: Validate ISPW release components
-            target: Promote
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase6280420\/Task6872401\/Task1845049\/Link6279116
-            type: xlrelease.Link
-            source: Promote
-            target: Run deployment
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase6280420\/Task6872401\/Task1845049\/Link1368733
-            type: xlrelease.Link
-            source: Get prod promote wait task id
-            target: prod promote wait task id
-          - name: Applications\/Folder49fcc9cbb62a41d089a40d03924ec038\/Release06090ab3e11d46bb93da78f4e442b271\/Phase6280420\/Task6872401\/Task1845049\/Link4372122
-            type: xlrelease.Link
-            source: Get prod deploy wait task id
-            target: prod deploy wait task id
       - name: Get Set information
         type: ispwServices.GetSetInformation
         srid: ispw
