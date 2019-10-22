@@ -12,8 +12,9 @@ spec:
   - name: Compuware ISPW
     type: ispwServices.Server
     url: !value ispw_url
-    username: !value ispw_username
-    password: !value ispw_password
+    authenticationMethod: Basic
+    authenticationToken: !value ispw_password
+    sslVerification: false
   - name: Topaz Box
     type: host.Unix
     address: topaz-box
