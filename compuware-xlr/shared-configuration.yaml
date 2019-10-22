@@ -1,0 +1,32 @@
+---
+apiVersion: xl-release/v1
+kind: Templates
+spec:
+- directory: Compuware Webinar Nov 12th
+  children:
+  - name: Xebialabs JIRA
+    type: jira.Server
+    url: !value jira_url
+    username: !value jira_username
+    password: !value jira_password
+  - name: Compuware ISPW
+    type: ispwServices.Server
+    url: !value ispw_url
+    username: !value ispw_username
+    password: !value ispw_password
+  - name: Topaz Box
+    type: host.Unix
+    address: topaz-box
+    title: Topaz Box
+    username: root
+    password: xebialabs
+    port: 22
+    connectionType: sudo
+  - name: Compuware Topaz
+    type: topaz.client
+    unixClientHost: Topaz Box
+    serverUrl: 192.168.1.1
+    serverPort: 1982
+    username: henkie
+    password: tenkie
+    clientHost: Unix

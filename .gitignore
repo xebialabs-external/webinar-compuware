@@ -1,0 +1,5 @@
+.env
+secrets.xlvals
+account.json
+*.lic
+.DS_Store
