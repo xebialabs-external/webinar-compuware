@@ -1,4 +1,4 @@
 FROM mdns/sshd:latest
 
-COPY topazcli /usr/local/bin/
+COPY TotalTestCLI.sh /usr/local/bin/topazcli/
 COPY *.txt /home/topaztest/
