@@ -31,11 +31,6 @@ spec:
             relId: ${ISPW_RELEASE_ID}
           - name: Validate ISPW release components
             type: xlrelease.Task
-          - name: Get deployment wait task id
-            type: xlr.GetTaskId
-            taskTitle: Placeholder for finishing deployment
-            variableMapping:
-              pythonScript.taskId: ${ISPW_QA_DEPL_TASK_ID}
           - name: Run deployment
             type: ispwServices.Deploy
             srid: ispw
@@ -44,9 +39,6 @@ spec:
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
             level: ${ISPW_LEVEL}
-          - name: Placeholder for finishing deployment
-            type: xlrelease.Task
-            owner: admin
       - name: end2end_test
         client: Compuware Topaz
         type: topaz.runtest
@@ -70,16 +62,6 @@ spec:
           tasks:
           - name: Validate ISPW release components
             type: xlrelease.Task
-          - name: Get preprod promote wait task id
-            type: xlr.GetTaskId
-            taskTitle: preprod promote wait task id
-            variableMapping:
-              pythonScript.taskId: ${ISPW_PREPROD_PROMOTE_TASK_ID}
-          - name: Get preprod deploy wait task id
-            type: xlr.GetTaskId
-            taskTitle: preprod deploy wait task id
-            variableMapping:
-              pythonScript.taskId: ${ISPW_PREPROD_DEPL_TASK_ID}
           - name: Promote
             type: ispwServices.Promote
             srid: ispw
@@ -96,12 +78,6 @@ spec:
             callbackUsername: admin
             callbackPassword: !value xlrelease_password
             level: ${ISPW_LEVEL_STG}
-          - name: preprod promote wait task id
-            type: xlrelease.Task
-            owner: admin
-          - name: preprod deploy wait task id
-            type: xlrelease.Task
-            owner: admin
       - name: Approve pre prod
         type: xlrelease.GateTask
         conditions:
@@ -122,16 +98,6 @@ spec:
           tasks:
           - name: Validate ISPW release components
             type: xlrelease.Task
-          - name: Get prod promote wait task id
-            type: xlr.GetTaskId
-            taskTitle: prod promote wait task id
-            variableMapping:
-              pythonScript.taskId: ${ISPW_PROD_PROMOTE_TASK_ID}
-          - name: Get prod deploy wait task id
-            type: xlr.GetTaskId
-            taskTitle: prod deploy wait task id
-            variableMapping:
-              pythonScript.taskId: ${ISPW_PROD_DEPL_TASK_ID}
           - name: Promote
             type: ispwServices.Promote
             srid: ispw
@@ -149,12 +115,6 @@ spec:
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
             level: ${ISPW_LEVEL_STG}
-          - name: prod promote wait task id
-            type: xlrelease.Task
-            owner: admin
-          - name: prod deploy wait task id
-            type: xlrelease.Task
-            owner: admin
       - name: Get Set information
         type: ispwServices.GetSetInformation
         srid: ispw
