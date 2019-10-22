@@ -15,7 +15,6 @@ spec:
           type: xldeploy.Deploy
           deploymentPackage: PetClinic-wlp/1.0
           deploymentEnvironment: WLP - defaultServer
-          xlDeployTaskId: ""
         - name: ISPW
           type: xlrelease.ParallelGroup
           tasks:
@@ -83,7 +82,6 @@ spec:
           type: xldeploy.Deploy
           deploymentPackage: PetClinic-wlp/1.0
           deploymentEnvironment: WLP - defaultServer
-          xlDeployTaskId: ""
         - name: ISPW
           type: xlrelease.ParallelGroup
           tasks:
@@ -153,7 +151,6 @@ spec:
           type: xldeploy.Deploy
           deploymentPackage: PetClinic-wlp/1.0
           deploymentEnvironment: WLP - defaultServer
-          xlDeployTaskId: ""
         - name: ISPW
           type: xlrelease.ParallelGroup
           tasks:
