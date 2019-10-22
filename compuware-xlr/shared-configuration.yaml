@@ -11,7 +11,7 @@ spec:
     password: !value jira_password
   - name: Compuware ISPW
     type: ispwServices.Server
-    url: !value ispw_url
+    url: http://ispw:8080/
     authenticationMethod: Basic
     cesToken: !value ispw_password
     enableSslVerification: false
@@ -19,15 +19,15 @@ spec:
     type: host.Unix
     address: topaz-box
     title: Topaz Box
-    username: root
-    password: xebialabs
+    username: topaztest
+    password: !value xlrelease_password
+    connectionType: SCP
     port: 22
-    connectionType: sudo
   - name: Compuware Topaz
     type: topaz.client
     unixClientHost: Topaz Box
     serverUrl: 192.168.1.1
     serverPort: 1982
     username: henkie
-    password: tenkie
+    password: "********"
     clientHost: Unix

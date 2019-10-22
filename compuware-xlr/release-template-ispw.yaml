@@ -4,32 +4,7 @@ kind: Templates
 spec:
 - directory: Compuware Webinar Nov 12th
   children:
-  - name: Compuware ISPW
-    type: ispwServices.Server
-    url: https://ispw.compuware.com/
-    authenticationMethod: Basic
-    cesToken: Changeme123
-    enableSslVerification: false
-  - name: Compuware Topaz
-    type: topaz.client
-    unixClientHost: Topaz Box
-    serverUrl: 192.168.1.1
-    serverPort: "1982"
-    username: henkie
-    password: !value "topaz_client_Compuware_Topaz_password"
-    clientHost: Unix
-  - name: Topaz Box
-    type: host.Unix
-    address: topaz-box
-    username: root
-    password: !value "host_Unix_Topaz_Box_password"
-  - name: Xebialabs JIRA
-    type: jira.Server
-    url: https://xebialabs.atlassian.net/
-    username: vlussenburg@xebialabs.com
-    password: !value "jira_Server_Xebialabs_JIRA_password"
   - template: Compuware - REST
-    scheduledStartDate: 2016-05-18T07:00:00Z
     phases:
     - phase: QA
       tasks:
@@ -69,7 +44,6 @@ spec:
             callbackTaskId: ${ISPW_QA_DEPL_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value "ispwServices_Deploy_Run_deployment_callbackPassword"
             level: ${ISPW_LEVEL}
           - name: Placeholder for finishing deployment
             type: xlrelease.Task
@@ -91,13 +65,14 @@ spec:
             type: xlrelease.Link
             source: Validate ISPW release components
             target: Run deployment
-      - name: Approve QA
-        type: xlrelease.GateTask
-        conditions:
-        - name: Development done
-          type: xlrelease.GateCondition
-        - name: Everything tested
-          type: xlrelease.GateCondition
+      - name: end2end_test
+        client: Compuware Topaz
+        type: topaz.runtest
+        project: C:\Users\wlee\CWXTCOB_TTT
+        testsuite: CWXTCOB_Scenario.testscenario
+        jcl: Runner.jcl
+        variableMapping:
+          pythonScript.sysExitCode: ${system-exit-code}
       color: '#68b749'
     - phase: Pre prod
       tasks:
@@ -131,14 +106,14 @@ spec:
             callbackTaskId: ${ISPW_PREPROD_PROMOTE_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value "ispwServices_Promote_Promote_callbackPassword"
+            callbackPassword: !value xlrelease_password
             level: ${ISPW_LEVEL}
           - name: Run deployment
             type: ispwServices.Deploy
             srid: ispw
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value "ispwServices_Deploy_Run_deployment_callbackPassword_0"
+            callbackPassword: !value xlrelease_password
             level: ${ISPW_LEVEL_STG}
           - name: preprod promote wait task id
             type: xlrelease.Task
@@ -201,7 +176,6 @@ spec:
             callbackTaskId: ${ISPW_PROD_PROMOTE_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value "ispwServices_Promote_Promote_callbackPassword_0"
             relId: XEBIAP3
             level: ${ISPW_LEVEL_STG}
           - name: Run deployment
@@ -211,7 +185,6 @@ spec:
             callbackTaskId: ${ISPW_PROD_DEPL_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value "ispwServices_Deploy_Run_deployment_callbackPassword_1"
             level: ${ISPW_LEVEL_STG}
           - name: prod promote wait task id
             type: xlrelease.Task
@@ -292,26 +265,12 @@ spec:
       key: ISPW_PROD_DEPL_TASK_ID
       requiresValue: false
       showOnReleaseStart: false
-    scriptUsername: admin
-    scriptUserPassword: !value "xlrelease_Release_Compuware___REST_scriptUserPassword"
-    riskProfile: Default risk profile
-  - template: topaz total test
-    scheduledStartDate: 2019-10-22T13:00:00Z
-    phases:
-    - phase: New Phase
-      tasks:
-      - name: end2end_test
-        type: topaz.runtest
-        project: C:\Users\wlee\CWXTCOB_TTT
-        testsuite: CWXTCOB_Scenario.testscenario
-        jcl: Runner.jcl
-        variableMapping:
-          pythonScript.sysExitCode: ${system-exit-code}
-    variables:
     - type: xlrelease.StringVariable
       key: system-exit-code
       requiresValue: false
       value: -1
+    scriptUsername: admin
+    scriptUserPassword: !value xlrelease_password
     riskProfile: Default risk profile
   - type: xlrelease.Dashboard
     tiles:
@@ -345,16 +304,3 @@ spec:
       col: 2
       action: CreateRelease
     parentTemplate: Compuware - REST
-  - type: xlrelease.Dashboard
-    tiles:
-    - name: Release progress
-      type: xlrelease.ReleaseProgressTile
-    - name: Release summary
-      type: xlrelease.ReleaseSummaryTile
-    - name: Resource usage
-      type: xlrelease.ResourceUsageTile
-    - name: Release timeline
-      type: xlrelease.TimelineTile
-    - name: Release health
-      type: xlrelease.ReleaseHealthTile
-    parentTemplate: topaz total test

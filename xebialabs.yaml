@@ -3,3 +3,4 @@ kind: Import
 metadata:
   imports:
     - compuware-xlr/shared-configuration.yaml
+    - compuware-xlr/release-template-ispw.yaml
