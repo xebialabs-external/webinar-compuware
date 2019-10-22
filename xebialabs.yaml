@@ -2,4 +2,4 @@ apiVersion: xl/v1
 kind: Import
 metadata:
   imports:
-    - compuware-xlr/xebialabs/shared-configuration.yaml
+    - compuware-xlr/shared-configuration.yaml
