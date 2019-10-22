@@ -13,8 +13,8 @@ spec:
     type: ispwServices.Server
     url: !value ispw_url
     authenticationMethod: Basic
-    authenticationToken: !value ispw_password
-    sslVerification: false
+    cesToken: !value ispw_password
+    enableSslVerification: false
   - name: Topaz Box
     type: host.Unix
     address: topaz-box
