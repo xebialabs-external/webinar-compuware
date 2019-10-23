@@ -1,5 +1,6 @@
-import time
+from random import randint
+from time import sleep
 
-time.sleep(5)
+sleep(randint(1,10))
 
 print "okidoki"
