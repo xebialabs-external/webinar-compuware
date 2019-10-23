@@ -31,3 +31,8 @@ spec:
     username: henkie
     password: "********"
     clientHost: Unix
+  - name: Compuware Sonarqube
+    type: sonar.Server
+    url: !value "sonar_Server_url"
+    username: !value "sonar_Server_username"
+    password: !value "sonar_Server_password"

@@ -1,3 +1,2 @@
-
-
-ispw_url = https://ispw.compuware.com/
+sonar_Server_username = admin
+sonar_Server_url = http://54.227.137.132:9000/

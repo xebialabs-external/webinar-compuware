@@ -6,6 +6,36 @@ spec:
   children:
   - template: Compuware - REST
     phases:
+    - phase: Post Commit
+      tasks:
+      - name: Checkout testcases
+        type: remoteScript.Unix
+        script: git clone https://github.com/steenbrahe/AppEmployeeTests
+        address: topaz-box
+        username: topaztest
+        password: !value "xlrelease_password"
+      - name: Run unit tests
+        type: topaz.runtest
+        client: Compuware Topaz
+        project: '"/home/topaztest/AppEmployeeTests/CWKTCOBX_Tests/Unit Test/"'
+        testsuite: CWKTCOBX_Scenario.testscenario
+        jcl: Runner.jcl
+        deletetemp: true
+        useStubs: true
+        ccclearstats: true
+        variableMapping:
+          pythonScript.sysExitCode: ${system-exit-code}
+      - name: Clean workspace
+        type: remoteScript.Unix
+        script: rm -rf AppEmployeeTests
+        address: topaz-box
+        username: topaztest
+        password: !value "xlrelease_password"
+      - name: Automatic check code compliance
+        type: sonar.checkCompliance
+        sonarServer: Compuware Sonarqube
+        resource: org.springframework.samples:spring-petclinic
+      color: '#0099CC'
     - phase: QA
       tasks:
       - name: Deployments
@@ -16,37 +46,52 @@ spec:
           deploymentPackage: PetClinic-wlp/1.0
           deploymentEnvironment: WLP - defaultServer
         - name: ISPW
-          type: xlrelease.ParallelGroup
+          type: xlrelease.SequentialGroup
           tasks:
           - name: Get release info
             type: ispwServices.GetReleaseInformation
+            ispwServiceServer: Compuware ISPW
             srid: ispw
             relId: ${ISPW_RELEASE_ID}
           - name: Create a new release
             type: ispwServices.CreateRelease
+            ispwServiceServer: Compuware ISPW
             srid: ispw
             application: ${ISPW_APPLICATION}
             stream: ${ISPW_STREAM}
-            description: ${ISPW_RELEASE_DESCRIPTION}
             relId: ${ISPW_RELEASE_ID}
-          - name: Validate ISPW release components
-            type: xlrelease.Task
+            description: ${ISPW_RELEASE_DESCRIPTION}
           - name: Run deployment
             type: ispwServices.Deploy
+            ispwServiceServer: Compuware ISPW
             srid: ispw
             runtimeConfiguration: CWCC
             callbackTaskId: ${ISPW_QA_DEPL_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
             level: ${ISPW_LEVEL}
-      - name: end2end_test
-        client: Compuware Topaz
+      - name: Checkout testcases
+        type: remoteScript.Unix
+        script: git clone https://github.com/steenbrahe/AppEmployeeTests
+        address: topaz-box
+        username: topaztest
+        password: !value "xlrelease_password"
+      - name: Run functional tests
         type: topaz.runtest
-        project: C:\Users\wlee\CWXTCOB_TTT
-        testsuite: CWXTCOB_Scenario.testscenario
+        client: Compuware Topaz
+        project: '"/home/topaztest/AppEmployeeTests/CWKTCOBX_Tests/Functional Test/"'
+        testsuite: TestScenario.xaunit
         jcl: Runner.jcl
+        deletetemp: true
+        ccclearstats: true
         variableMapping:
           pythonScript.sysExitCode: ${system-exit-code}
+      - name: Clean workspace
+        type: remoteScript.Unix
+        script: rm -rf AppEmployeeTests
+        address: topaz-box
+        username: topaztest
+        password: !value "xlrelease_password"
       color: '#68b749'
     - phase: Pre prod
       tasks:
@@ -58,28 +103,32 @@ spec:
           deploymentPackage: PetClinic-wlp/1.0
           deploymentEnvironment: WLP - defaultServer
         - name: ISPW
-          type: xlrelease.ParallelGroup
+          type: xlrelease.SequentialGroup
           tasks:
-          - name: Validate ISPW release components
-            type: xlrelease.Task
           - name: Promote
             type: ispwServices.Promote
+            ispwServiceServer: Compuware ISPW
             srid: ispw
             runtimeConfiguration: CWCC
             callbackTaskId: ${ISPW_PREPROD_PROMOTE_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value xlrelease_password
+            callbackPassword: !value "xlrelease_password"
             level: ${ISPW_LEVEL}
           - name: Run deployment
             type: ispwServices.Deploy
+            ispwServiceServer: Compuware ISPW
             srid: ispw
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            callbackPassword: !value xlrelease_password
+            callbackPassword: !value "xlrelease_password"
             level: ${ISPW_LEVEL_STG}
+      - name: Manual test
+        type: xlrelease.Task
+        owner: admin
       - name: Approve pre prod
         type: xlrelease.GateTask
+        owner: admin
         conditions:
         - name: Testing done?
           type: xlrelease.GateCondition
@@ -94,29 +143,29 @@ spec:
           deploymentPackage: PetClinic-wlp/1.0
           deploymentEnvironment: WLP - defaultServer
         - name: ISPW
-          type: xlrelease.ParallelGroup
+          type: xlrelease.SequentialGroup
           tasks:
-          - name: Validate ISPW release components
-            type: xlrelease.Task
           - name: Promote
             type: ispwServices.Promote
+            ispwServiceServer: Compuware ISPW
             srid: ispw
             runtimeConfiguration: CWCC
-            callbackTaskId: ${ISPW_PROD_PROMOTE_TASK_ID}
+            callbackTaskId: ${ISPW_PREPROD_PROMOTE_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
-            relId: XEBIAP3
-            level: ${ISPW_LEVEL_STG}
+            callbackPassword: !value "xlrelease_password"
+            level: ${ISPW_LEVEL}
           - name: Run deployment
             type: ispwServices.Deploy
+            ispwServiceServer: Compuware ISPW
             srid: ispw
-            runtimeConfiguration: CWCC
-            callbackTaskId: ${ISPW_PROD_DEPL_TASK_ID}
             callbackUrl: http://dtw-xebialabs.nasa.cpwr.corp:5516
             callbackUsername: admin
+            callbackPassword: !value "xlrelease_password"
             level: ${ISPW_LEVEL_STG}
       - name: Get Set information
         type: ispwServices.GetSetInformation
+        ispwServiceServer: Compuware ISPW
         srid: ispw
         setId: S000004743
       color: '#663366'
@@ -124,29 +173,38 @@ spec:
     - type: xlrelease.StringVariable
       key: ISPW_RELEASE_ID
       label: ISPW Release id
+      value: release-1
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_RELEASE_DESCRIPTION
       label: ISPW Release description
+      value: release-description
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_APPLICATION
       label: ISPW Application
       value: peka
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_LEVEL
       label: ISPW Level Dev
       value: qa1
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_USER
       label: ISPW User
       value: icapss0
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_LEVEL_STG
       label: ISPW Level QA
       value: stg
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_LEVEL_PRD
       label: ISPW Level Production
       value: prd
+      showOnReleaseStart: false
     - type: xlrelease.StringVariable
       key: ISPW_STREAM
       label: ISPW Stream
@@ -176,9 +234,10 @@ spec:
       requiresValue: false
       value: -1
     scriptUsername: admin
-    scriptUserPassword: !value xlrelease_password
+    scriptUserPassword: !value "xlrelease_password"
     riskProfile: Default risk profile
   - type: xlrelease.Dashboard
+    owner: admin
     tiles:
     - name: Release progress
       type: xlrelease.ReleaseProgressTile
