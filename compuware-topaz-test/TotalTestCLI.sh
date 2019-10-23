@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cat output-success.txt
+cat /usr/local/bin/topazcli/output-success.txt
 exit 0
